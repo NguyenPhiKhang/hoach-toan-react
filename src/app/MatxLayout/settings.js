@@ -11,7 +11,7 @@ function createMatxThemes() {
     themes[key] = createMuiTheme(merge({}, themeOptions, value));
   });
 
-  console.log(themes);
+  // console.log(themes);
   return themes;
 }
 const themes = createMatxThemes();
