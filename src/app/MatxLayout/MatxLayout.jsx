@@ -1,16 +1,17 @@
-import React, { Component } from "react";
+import React, { Component, Suspense } from "react";
 import { MatxLayouts } from "./index";
 import { PropTypes } from "prop-types";
-import { withRouter } from "react-router-dom";
 import { matchRoutes } from "react-router-config";
 import { connect } from "react-redux";
-import AppContext from "app/appContext";
+import AppContext from "../appContext";
 import {
   setLayoutSettings,
   setDefaultSettings
-} from "app/redux/actions/LayoutActions";
+} from "../redux/actions/LayoutActions";
 import { isEqual, merge } from "lodash";
-import { isMdScreen, getQueryParam } from "utils";
+import { isMdScreen, getQueryParam } from "../../utils";
+import Loading from "../../matx/MatxLoadable/Loading";
+import { withRouter } from "react-router-dom";
 
 class MatxLayout extends Component {
   constructor(props, context) {
@@ -23,12 +24,14 @@ class MatxLayout extends Component {
   }
 
   componentDidUpdate(prevProps) {
+    console.log("---- componentDidUpdate - MatxLayout -------");
     if (this.props.location.pathname !== prevProps.location.pathname) {
       this.updateSettingsFromRouter();
     }
   }
 
   componentWillMount() {
+    console.log("---- componentWillMount - MatxLayout -------");
     if (window) {
       // LISTEN WINDOW RESIZE
       window.addEventListener("resize", this.listenWindowResize);
@@ -36,6 +39,7 @@ class MatxLayout extends Component {
   }
 
   componentWillUnmount() {
+    console.log("---- componentWillUnmount - MatxLayout -------");
     if (window) {
       window.removeEventListener("resize", this.listenWindowResize);
     }
@@ -90,7 +94,11 @@ class MatxLayout extends Component {
     const { settings } = this.props;
     const Layout = MatxLayouts[settings.activeLayout];
 
-    return <Layout {...this.props} />;
+    return (
+      <Suspense fallback={<Loading />}>
+        <Layout {...this.props} />;
+      </Suspense>
+    );
   }
 }
 
@@ -103,9 +111,7 @@ const mapStateToProps = state => ({
 
 MatxLayout.contextType = AppContext;
 
-export default withRouter(
-  connect(
-    mapStateToProps,
-    { setLayoutSettings, setDefaultSettings }
-  )(MatxLayout)
-);
+export default withRouter(connect(
+  mapStateToProps,
+  { setLayoutSettings, setDefaultSettings }
+)(MatxLayout));

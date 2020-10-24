@@ -7,7 +7,6 @@ import {
   Button
 } from "@material-ui/core";
 import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
-import { connect } from "react-redux";
 
 class SignUp extends Component {
   state = {
@@ -116,11 +115,4 @@ class SignUp extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  // setUser: PropTypes.func.isRequired
-});
-
-export default connect(
-  mapStateToProps,
-  {}
-)(SignUp);
+export default SignUp;

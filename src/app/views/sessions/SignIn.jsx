@@ -9,6 +9,10 @@ import {
   CircularProgress
 } from "@material-ui/core";
 import { TextValidator, ValidatorForm } from "react-material-ui-form-validator";
+import { connect } from "react-redux";
+import { PropTypes } from "prop-types";
+import { withRouter } from "react-router-dom";
+import { loginWithEmailAndPassword } from "../../redux/actions/LoginActions";
 
 const styles = theme => ({
   wrapper: {
@@ -37,7 +41,7 @@ class SignIn extends Component {
     });
   };
   handleFormSubmit = event => {
-    // this.props.loginWithEmailAndPassword({ ...this.state });
+    this.props.loginWithEmailAndPassword({ ...this.state });
   };
   render() {
     let { email, password } = this.state;
@@ -85,18 +89,20 @@ class SignIn extends Component {
                       name="agreement"
                       onChange={this.handleChange}
                       control={<Checkbox checked />}
-                      label="Remember me"
+                      label="I have read and agree to the terms of service."
                     />
                     <div className="flex flex-middle mb-8">
                       <div className={classes.wrapper}>
                         <Button
                           variant="contained"
                           color="primary"
+                          disabled={this.props.login.loading}
+                          // disabled={false}
                           type="submit"
                         >
                           Sign in
                         </Button>
-                        {false && (
+                        {this.props.login.loading && (
                           <CircularProgress
                             size={24}
                             className={classes.buttonProgress}
@@ -106,18 +112,18 @@ class SignIn extends Component {
                       <span className="ml-16 mr-8">or</span>
                       <Button
                         className="capitalize"
-                        onClick={() =>{
-                        //   this.props.history.push("/session/signup")
-                        }}
+                        onClick={() =>
+                          this.props.history.push("/session/signup")
+                        }
                       >
                         Sign up
                       </Button>
                     </div>
                     <Button
                       className="text-primary"
-                      onClick={() =>{
-                        // this.props.history.push("/session/forgot-password")
-                      }}
+                      onClick={() =>
+                        this.props.history.push("/session/forgot-password")
+                      }
                     >
                       Forgot password?
                     </Button>
@@ -132,7 +138,15 @@ class SignIn extends Component {
   }
 }
 
-
+const mapStateToProps = state => ({
+  loginWithEmailAndPassword: PropTypes.func.isRequired,
+  login: state.login
+});
 export default withStyles(styles, { withTheme: true })(
-  (SignIn)
+  withRouter(
+    connect(
+      mapStateToProps,
+      { loginWithEmailAndPassword }
+    )(SignIn)
+  )
 );

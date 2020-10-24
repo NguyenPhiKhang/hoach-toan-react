@@ -27,21 +27,25 @@ const settings = {
 
 const sessionRoutes = [
   {
+    // name: "SignUp",
     path: "/session/signup",
     component: SignUp,
     settings
   },
   {
+    // name: "SignIn",
     path: "/session/signin",
     component: SignIn,
     settings
   },
   {
+    // name: "FogotPass",
     path: "/session/forgot-password",
     component: ForgotPassword,
     settings
   },
   {
+    // name: "404",
     path: "/session/404",
     component: NotFound,
     settings

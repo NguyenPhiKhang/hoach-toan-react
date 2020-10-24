@@ -3,15 +3,8 @@ import {
   Card,
   Grid,
   Button,
-  withStyles,
-  CircularProgress
 } from "@material-ui/core";
 import { TextValidator, ValidatorForm } from "react-material-ui-form-validator";
-import { connect } from "react-redux";
-import { PropTypes } from "prop-types";
-import { withRouter } from "react-router-dom";
-
-// import { resetPassword } from "../../redux/actions/LoginActions";
 
 class ForgotPassword extends Component {
   state = {
@@ -64,7 +57,7 @@ class ForgotPassword extends Component {
                       <Button
                         className="capitalize"
                         onClick={() =>{
-                          // this.props.history.push("/session/signin")
+                          this.props.history.push("/session/signin")
                         }}
                       >
                         Sign in
@@ -80,16 +73,5 @@ class ForgotPassword extends Component {
     );
   }
 }
-
-// const mapStateToProps = state => ({
-//   resetPassword: PropTypes.func.isRequired,
-//   login: state.login
-// });
-// export default withRouter(
-//   connect(
-//     mapStateToProps,
-//     { resetPassword }
-//   )(ForgotPassword)
-// );
 
 export default ForgotPassword;
