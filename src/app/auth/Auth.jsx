@@ -22,9 +22,6 @@ class Auth extends Component {
             // this.checkJwtAuth();
 
         // this.checkFirebaseAuth();
-    }
-
-    componentDidMount(){
         if (localStorageService.getItem("jwt_token")) {
             this.checkJwtAuth();
         } else {
@@ -32,6 +29,16 @@ class Auth extends Component {
                 pathname: "/session/signin"
             });
         }
+    }
+
+    componentDidMount(){
+        // if (localStorageService.getItem("jwt_token")) {
+        //     this.checkJwtAuth();
+        // } else {
+        //     history.push({
+        //         pathname: "/session/signin"
+        //     });
+        // }
     }
 
     checkJwtAuth = () => {

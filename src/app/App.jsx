@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/App.scss';
+import '../styles/_app.scss';
 import MatxTheme from './MatxLayout/MatxTheme/MatxTheme';
 import { Provider } from "react-redux";
 import { Store } from './redux/Store';

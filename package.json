@@ -4,12 +4,16 @@
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.11.0",
+    "@material-ui/icons": "^4.9.1",
     "@material-ui/styles": "^4.10.0",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "axios": "^0.20.0",
     "babel-polyfill": "^6.26.0",
+    "date-fns": "^2.16.1",
+    "echarts": "^4.9.0",
+    "echarts-for-react": "^2.0.16",
     "lodash": "^4.17.20",
     "node-sass": "^4.14.1",
     "react": "^17.0.0",
@@ -26,7 +30,7 @@
     "react-vis": "^1.11.7",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
-    "swiper": "^6.3.4"
+    "swiper": "^4.5.0"
   },
   "scripts": {
     "start": "react-scripts start",
