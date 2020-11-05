@@ -112,7 +112,7 @@ export const themeColors = {
       },
       background: {
         paper: "#222A45",
-        default: "#1a2038"
+        default: "#ff9e43"
       }
     }
   },

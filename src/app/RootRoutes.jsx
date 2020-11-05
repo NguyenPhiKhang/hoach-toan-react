@@ -8,7 +8,7 @@ import sessionRoutes from "./views/sessions/SessionRoutes";
 // import materialRoutes from "./views/material-kit/MaterialRoutes";
 // import dragAndDropRoute from "./views/Drag&Drop/DragAndDropRoute";
 
-// import formsRoutes from "./views/forms/FormsRoutes";
+import formsRoutes from "./views/forms/FormsRoutes";
 // import mapRoutes from "./views/map/MapRoutes";
 
 const redirectRoute = [
@@ -31,7 +31,7 @@ const routes = [
   // ...materialRoutes,
   // ...utilitiesRoutes,
   // ...dragAndDropRoute,
-  // ...formsRoutes,
+  ...formsRoutes,
   // ...mapRoutes,
   ...redirectRoute,
   ...errorRoute

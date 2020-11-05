@@ -25,7 +25,7 @@ class JwtAuthService {
       }, 1000);
     }).then(data => {
       // Login successful
-      // Save token
+      // Save tokens
       this.setSession(data.token);
       // Set user
       this.setUser(data);
@@ -41,8 +41,6 @@ class JwtAuthService {
         resolve(this.user);
       }, 100);
     }).then(data => {
-      console.log("data")
-      console.log(data)
       // Token is valid
       this.setSession(data.token);
       this.setUser(data);

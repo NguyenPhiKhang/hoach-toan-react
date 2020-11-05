@@ -97,7 +97,7 @@ class SignIn extends Component {
                           variant="contained"
                           color="primary"
                           disabled={this.props.login.loading}
-                          // disabled={false}
+                          // disabled={false}c
                           type="submit"
                         >
                           Sign in
@@ -142,6 +142,7 @@ const mapStateToProps = state => ({
   loginWithEmailAndPassword: PropTypes.func.isRequired,
   login: state.login
 });
+
 export default withStyles(styles, { withTheme: true })(
   withRouter(
     connect(

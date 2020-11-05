@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
 import Menu from "@material-ui/core/Menu";
+import { Button } from "@material-ui/core";
 
 const MatxMenu = props => {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -16,14 +17,13 @@ const MatxMenu = props => {
 
   return (
     <Fragment>
-      <div
-        style={{ display: "inline-block" }}
+      <Button
+        className="inline-block border-radius-30"
         aria-owns={anchorEl ? "simple-menu" : undefined}
         aria-haspopup="true"
-        onClick={handleClick}
-      >
+        onClick={handleClick}>
         {props.menuButton}
-      </div>
+      </Button>
       <Menu
         elevation={8}
         getContentAnchorEl={null}
@@ -41,7 +41,7 @@ const MatxMenu = props => {
       >
         {children.map((child, index) => (
           <div
-            onClick={shouldCloseOnItemClick ? handleClose : () => {}}
+            onClick={shouldCloseOnItemClick ? handleClose : () => { }}
             key={index}
           >
             {child}

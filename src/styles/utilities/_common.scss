@@ -4,26 +4,32 @@
   background-repeat: no-repeat;
   background-size: 100%;
 }
+
 .circular-image-small {
   height: 48px;
   width: 48px;
   border-radius: 50%;
   overflow: hidden;
 }
+
 .card {
   transition: all 0.3s ease;
+
   &:hover {
     box-shadow: $elevation-z12;
   }
 }
+
 .card-title {
   font-size: 1rem;
   text-transform: capitalize;
   font-weight: 500;
 }
+
 .card-subtitle {
   font-size: 0.875rem;
   color: $muted;
+
   .theme-dark & {
     color: rgba(#fff, 0.54);
   }
@@ -34,11 +40,13 @@
     display: none !important;
   }
 }
+
 .hide-on-lg {
   @media screen and (min-width: 1200px) {
     display: none !important;
   }
 }
+
 .show-on-lg {
   @media screen and (max-width: 1200px) {
     display: none !important;
@@ -68,6 +76,7 @@
   .MuiFab-root {
     min-height: 32px !important;
   }
+
   .MuiIcon-root {
     font-size: 13px !important;
   }
@@ -75,18 +84,23 @@
 
 .show-on-mobile {
   display: none !important;
+
   @include media(767px) {
     display: inherit !important;
   }
 }
+
 .hide-on-mobile {
   display: inherit;
+
   @include media(767px) {
     display: none;
   }
 }
+
 .invisible-on-pc {
   visibility: hidden;
+
   @include media(767px) {
     visibility: visible;
   }
@@ -96,4 +110,14 @@
   pre {
     white-space: pre-line;
   }
+}
+
+.hide-name-on-mobile {
+  @media screen and (max-width: 600px) {
+    display: none !important;
+  }
+}
+
+.border-radius-30 {
+  border-radius: 30px !important;
 }

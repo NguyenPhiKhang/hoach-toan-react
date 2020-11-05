@@ -6,7 +6,8 @@ import {
   MenuItem,
   withStyles,
   MuiThemeProvider,
-  Icon
+  Icon,
+  Avatar
 } from "@material-ui/core";
 import { connect } from "react-redux";
 import { setLayoutSettings } from "../../redux/actions/LayoutActions";
@@ -61,7 +62,7 @@ class Layout1Topbar extends Component {
   };
 
   render() {
-    let { theme, settings, className, style } = this.props;
+    let { theme, settings, className, style, user } = this.props;
     const topbarTheme =
       settings.themes[settings.layout1Settings.topbar.theme] || theme;
     return (
@@ -100,11 +101,13 @@ class Layout1Topbar extends Component {
 
                 <MatxMenu
                   menuButton={
-                    <img
-                      className="mx-8 text-middle circular-image-small cursor-pointer"
-                      src="/assets/images/face-6.jpeg"
-                      alt="user"
-                    />
+                    <div className="flex flex-middle flex-center">
+                      <div className="flex-column text-middle pr-8 hide-name-on-mobile capitalize">
+                        <span><strong>{user.displayName}</strong></span>
+                      </div>
+                      <Avatar src="/assets/images/face-6.jpeg"
+                        alt="user" />
+                    </div>
                   }
                 >
                   <MenuItem style={{ minWidth: 185 }}>
@@ -156,7 +159,8 @@ Layout1Topbar.propTypes = {
 const mapStateToProps = state => ({
   setLayoutSettings: PropTypes.func.isRequired,
   logoutUser: PropTypes.func.isRequired,
-  settings: state.layout.settings
+  settings: state.layout.settings,
+  user: state.user
 });
 
 export default withStyles(styles, { withTheme: true })(

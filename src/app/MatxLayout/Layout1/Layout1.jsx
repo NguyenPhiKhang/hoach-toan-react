@@ -45,7 +45,6 @@ class Layout1 extends Component {
   };
 
   render() {
-    console.log(this.props);
     let { settings, classes, theme } = this.props;
 
     let { layout1Settings } = settings;
@@ -54,6 +53,8 @@ class Layout1 extends Component {
       [`${settings.activeLayout} sidenav-${layout1Settings.leftSidebar.mode} theme-${theme.palette.type} flex`]: true,
       "topbar-fixed": layout1Settings.topbar.fixed
     };
+
+    console.log(settings);
     return (
       <AppContext.Consumer>
         {({ routes }) => (

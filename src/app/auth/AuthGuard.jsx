@@ -15,13 +15,17 @@ class AuthGuard extends Component {
   }
 
   componentDidMount() {
+    console.log("---- componentDidMount - AuthGuard -------");
+    console.log(this.state.authenticated)
     if (!this.state.authenticated) {
+      console.log("ok1")
       this.redirectRoute(this.props);
     }
   }
 
   componentDidUpdate() {
     console.log("---- componentDidUpdate - AuthGuard -------");
+    console.log(this.state.authenticated)
     if (!this.state.authenticated) {
       this.redirectRoute(this.props);
     }
@@ -29,18 +33,23 @@ class AuthGuard extends Component {
 
   shouldComponentUpdate(nextProps, nextState) {
     console.log("---- shouldComponentUpdate - AuthGuard -------");
+    console.log(nextState.authenticated);
+    console.log(this.state.authenticated);
     return nextState.authenticated !== this.state.authenticated;
   }
 
   static getDerivedStateFromProps(props, state) {   
+    console.log("---- getDerivedStateFromProps - AuthGuard -------");
     const { location, user } = props;
     const { pathname } = location;
+    console.log(props);
     const matched = state.routes.find(r => r.path === pathname);
+    console.log(matched)
     const authenticated =
       matched && matched.auth && matched.auth.length
         ? matched.auth.includes(user.role)
         : true;
-
+    console.log("authenticated: "+ authenticated);
     return {
       authenticated
     };
@@ -57,6 +66,7 @@ class AuthGuard extends Component {
   }
 
   render() {
+    console.log("---- Render -- AuthGuard ----");
     let { children } = this.props;
     const { authenticated } = this.state;
     return authenticated ? <Fragment>{children}</Fragment> : null;

@@ -19,6 +19,7 @@ class MatxSearchBox extends Component {
 
   render() {
     let { classes } = this.props;
+    console.log(this.props.theme)
     return (
       <React.Fragment>
         {!this.state.open && (

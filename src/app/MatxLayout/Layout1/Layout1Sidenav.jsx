@@ -169,7 +169,7 @@ class Layout1Sidenav extends Component {
             {(
               <Fragment>
                 {this.renderLogoSwitch()}
-                <Sidenav>{this.renderUser()}</Sidenav>
+                <Sidenav></Sidenav>
               </Fragment>
             )}
           </div>

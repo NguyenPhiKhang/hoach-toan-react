@@ -19,6 +19,8 @@ class Dashboard1 extends Component {
   state = {};
 
   render() {
+    console.log("Dashboard");
+    console.log(this.props);
     let { theme } = this.props;
 
     return (

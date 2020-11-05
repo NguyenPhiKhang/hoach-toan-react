@@ -25,6 +25,8 @@ class MatxLayout extends Component {
 
   componentDidUpdate(prevProps) {
     console.log("---- componentDidUpdate - MatxLayout -------");
+    // console.log(this.props.location.pathname);
+    // console.log(prevProps.location.pathname);
     if (this.props.location.pathname !== prevProps.location.pathname) {
       this.updateSettingsFromRouter();
     }
@@ -91,12 +93,13 @@ class MatxLayout extends Component {
   }
 
   render() {
+    console.log("---- Render -- MatxLayout ----");
     const { settings } = this.props;
     const Layout = MatxLayouts[settings.activeLayout];
 
     return (
       <Suspense fallback={<Loading />}>
-        <Layout {...this.props} />;
+        <Layout {...this.props} />
       </Suspense>
     );
   }

@@ -19,19 +19,9 @@ class Auth extends Component {
         // this.props.setUserData(localStorageService.getItem("auth_user"));
 
         // Check current token is valid on page load/reload
-            // this.checkJwtAuth();
+        // this.checkJwtAuth();
 
         // this.checkFirebaseAuth();
-        if (localStorageService.getItem("jwt_token")) {
-            this.checkJwtAuth();
-        } else {
-            history.push({
-                pathname: "/session/signin"
-            });
-        }
-    }
-
-    componentDidMount(){
         // if (localStorageService.getItem("jwt_token")) {
         //     this.checkJwtAuth();
         // } else {
@@ -41,15 +31,24 @@ class Auth extends Component {
         // }
     }
 
-    checkJwtAuth = () => {
+    componentDidMount() {
+        if (localStorageService.getItem("jwt_token")) {
+            this.checkJwtAuth();
+        }
+    }
+
+    checkJwtAuth = async () => {
         // // You need to send token to your server to check token is valid
         // // modify loginWithToken method in jwtService
+        console.log("checkJWT");
         jwtAuthService.loginWithToken().then(user => {
 
             // Valid token
             // Set user
             this.props.setUserData(user);
-
+            history.push({
+                pathname: '/'
+            })
             // You should redirect user to Dashboard here
 
         }).catch(err => {
@@ -75,6 +74,7 @@ class Auth extends Component {
     //   };
 
     render() {
+        console.log("---- Render -- Auth ----");
         const { children } = this.props;
         return <Fragment>{children}</Fragment>;
     }
