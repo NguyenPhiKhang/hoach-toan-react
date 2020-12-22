@@ -1,4 +1,5 @@
 import React, { lazy, Suspense } from 'react';
+import '../fake-db/index';
 import '../styles/_app.scss';
 import MatxTheme from './MatxLayout/MatxTheme/MatxTheme';
 import { Provider } from "react-redux";
@@ -12,18 +13,30 @@ import history from '../history';
 import Loading from '../matx/MatxLoadable/Loading';
 import AuthGuard from './auth/AuthGuard';
 
+let AuthLazy = lazy(() => import("./auth/Auth"));
+let AuthGuardLazy = lazy(() => import("./auth/AuthGuard"));
+
 function App() {
   return (
     <AppContext.Provider value={{ routes }}>
       <Provider store={Store}>
         <MatxTheme>
-          <Auth>
+          <Suspense fallback={<div>Loading....</div>}>
+            <AuthLazy>
+              <Router history={history}>
+                <AuthGuardLazy>
+                  <MatxLayout />
+                </AuthGuardLazy>
+              </Router>
+            </AuthLazy>
+          </Suspense>
+          {/* <Auth>
             <Router history={history}>
               <AuthGuard>
                 <MatxLayout />
               </AuthGuard>
             </Router>
-          </Auth>
+          </Auth> */}
         </MatxTheme>
       </Provider>
     </AppContext.Provider>

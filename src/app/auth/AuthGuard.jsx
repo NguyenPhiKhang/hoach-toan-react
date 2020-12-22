@@ -2,6 +2,7 @@ import React, { Component, Fragment } from "react";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import AppContext from "../appContext";
+import localStorageService from "../services/localStorageService";
 
 class AuthGuard extends Component {
   constructor(props, context) {
@@ -38,21 +39,29 @@ class AuthGuard extends Component {
     return nextState.authenticated !== this.state.authenticated;
   }
 
-  static getDerivedStateFromProps(props, state) {   
+  static getDerivedStateFromProps(props, state) {
     console.log("---- getDerivedStateFromProps - AuthGuard -------");
     const { location, user } = props;
     const { pathname } = location;
-    console.log(props);
-    const matched = state.routes.find(r => r.path === pathname);
-    console.log(matched)
-    const authenticated =
-      matched && matched.auth && matched.auth.length
-        ? matched.auth.includes(user.role)
-        : true;
-    console.log("authenticated: "+ authenticated);
-    return {
-      authenticated
-    };
+
+    if (Object.keys(user).length === 0 && localStorageService.getItem("jwt_token")) {
+      const authenticated = true;
+      return {
+        authenticated
+      };
+    } else {
+      console.log(props);
+      const matched = state.routes.find(r => r.path === pathname);
+      console.log(matched)
+      const authenticated =
+        matched && matched.auth && matched.auth.length
+          ? matched.auth.includes(user.role)
+          : true;
+      console.log("authenticated: " + authenticated);
+      return {
+        authenticated
+      };
+    }
   }
 
   redirectRoute(props) {

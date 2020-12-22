@@ -88,7 +88,7 @@ class SignIn extends Component {
                       className="mb-8"
                       name="agreement"
                       onChange={this.handleChange}
-                      control={<Checkbox checked />}
+                      control={<Checkbox checked color="primary"/>}
                       label="I have read and agree to the terms of service."
                     />
                     <div className="flex flex-middle mb-8">

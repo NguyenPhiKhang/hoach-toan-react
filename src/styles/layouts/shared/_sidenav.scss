@@ -136,11 +136,12 @@
       position: relative;
       font-size: 8px;
       display: inline-block;
-      height: 8px;
-      width: 8px;
-      line-height: 8px;
+      height: 4px;
+      width: 4px;
+      line-height: 4px;
       z-index: 0;
       text-indent: -1000000px;
+      margin-left: 15px;
       &::after {
         position: absolute;
         content: "";

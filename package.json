@@ -11,6 +11,7 @@
     "@testing-library/user-event": "^7.1.2",
     "axios": "^0.20.0",
     "babel-polyfill": "^6.26.0",
+    "clsx": "^1.1.1",
     "date-fns": "^2.16.1",
     "echarts": "^4.9.0",
     "echarts-for-react": "^2.0.16",
@@ -33,7 +34,7 @@
     "swiper": "^4.5.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "PORT=3006 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

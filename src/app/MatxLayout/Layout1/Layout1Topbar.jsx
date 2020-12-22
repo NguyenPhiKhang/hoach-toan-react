@@ -78,7 +78,7 @@ class Layout1Topbar extends Component {
                   <Icon>menu</Icon>
                 </IconButton>
 
-                <div className="hide-on-mobile">
+                {/* <div className="hide-on-mobile">
                   <IconButton>
                     <Icon>mail_outline</Icon>
                   </IconButton>
@@ -90,14 +90,14 @@ class Layout1Topbar extends Component {
                   <IconButton>
                     <Icon>star_outline</Icon>
                   </IconButton>
-                </div>
+                </div> */}
               </div>
               <div className="flex flex-middle">
-                <MatxSearchBox />
+                {/* <MatxSearchBox />
 
                 <NotificationBar />
 
-                <ShoppingCart></ShoppingCart>
+                <ShoppingCart></ShoppingCart> */}
 
                 <MatxMenu
                   menuButton={

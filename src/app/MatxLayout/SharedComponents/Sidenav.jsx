@@ -37,7 +37,7 @@ class Sidenav extends Component {
   render() {
     return (
       <Fragment>
-        <Scrollbar option={{suppressScrollX: true}} className="scrollable position-relative">
+        <Scrollbar options={{suppressScrollX: true}} className="scrollable position-relative mt-8">
           {this.props.children}
           <MatxVerticalNav navigation={navigations} />
         </Scrollbar>
